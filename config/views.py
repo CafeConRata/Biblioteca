@@ -173,3 +173,18 @@ def vaciar_carrito(request):
     request.session['carrito'] = {}  # vaciar
     request.session.modified = True  # asegurar que se guarde
     return redirect('carrito')
+
+def comprar_carrito(request):
+    carrito = request.session.get('carrito')
+
+    if not carrito:
+        messages.warning(request, 'El carrito está vacío')
+        return redirect('carrito')
+
+    # Vaciar carrito
+    request.session['carrito'] = {}
+    request.session.modified = True
+
+    messages.success(request, '¡Compra realizada con éxito!')
+
+    return redirect('Home')

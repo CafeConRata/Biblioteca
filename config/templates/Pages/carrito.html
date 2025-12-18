@@ -30,10 +30,21 @@
     </div>
 
     <div class="carrito-acciones">
-        <a href="{% url 'vaciar_carrito' %}" class="btn-vaciar">Vaciar Carrito</a>
-        <a href="{% url 'Productos' %}" class="btn-continuar">Continuar Comprando</a>
-        <button class="btn-comprar">Comprar Ahora</button>
-    </div>
+        <form method="post" action="{% url 'vaciar_carrito' %}" class="form-comprar">
+        {% csrf_token %}
+        <button type="submit" class="btn-comprar">Vaciar Carrito</button>
+    </form>
+
+        <form method="post" action="{% url 'Productos' %}" class="form-comprar">
+        {% csrf_token %}
+        <button type="submit" class="btn-comprar">Continuar Comprando</button>
+    </form>
+
+    <form method="post" action="{% url 'comprar_carrito' %}" class="form-comprar">
+        {% csrf_token %}
+        <button type="submit" class="btn-comprar">Comprar Ahora</button>
+    </form>
+</div>
 
     {% else %}
     <div class="carrito-vacio">

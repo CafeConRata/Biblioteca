@@ -17,6 +17,7 @@ urlpatterns = [
     path('carrito/agregar/<int:id>/', agregar_carrito, name="agregar_carrito"),
     path('carrito/eliminar/<int:id>/', eliminar_carrito, name="eliminar_carrito"),
     path('carrito/vaciar/', vaciar_carrito, name="vaciar_carrito"),
+    path('carrito/comprar/', views.comprar_carrito, name='comprar_carrito'),
 
     # Paginas utilizadas
     path('', base, name="Base"),
